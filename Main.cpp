@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -23,25 +24,30 @@ double fun2(const int x) {
 }
 
 int main() {
-    int x0, x1, deltaX;
+    int x0, x1, deltaX, n;
     cout << "Input start value: " << endl;
     cin >> x0;
     cout << "Input final value: " << endl;
     cin >> x1;
     cout << "Input step size: " << endl;
     cin >> deltaX;
+    n = 1;
+    cout << "|" << setw(13) << "line number" << " | " << setw(14) << "x= | " << setw(14) << "value |" << endl;
     while (x0 <= x1) {
-        cout << x0;
-        x0 += deltaX;
-        if (isnan(fun1(x0))) {
-            cout << " Error ";
+        cout << "|" << setw(13) << n << " | ";
+        n++;
+        cout << setw(11) << x0 << " | ";
+        if (x0 % 2 == 0) {
+            if (isnan(fun1(x0))) {
+                cout << setw(14) << "Error |";
+            } else
+                cout << setw(12) << fun1(x0) << " |";
+        } else if (isnan(fun2(x0))) {
+            cout << setw(14) << "Error |";
         } else
-            cout << fun1(x0) << endl;
-        if (isnan(fun2(x0))) {
-            cout << " Error ";
-        } else
-            cout << fun2(x0);
+            cout << setw(12) << fun2(x0) << " |";
         cout << endl;
+        x0 += deltaX;
     }
     return 0;
 }
