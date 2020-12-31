@@ -6,15 +6,15 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <numbers>
 
 using namespace std;
 
 const short NUM = 69;
-double pi = 3.1415926535;
 
-double fun1(double x) {
-    const auto fun1 = log((1 - NUM) / (cos((x - NUM) * (pi / 180))));
-    const auto fun2 = abs(tan(x * pi / 180) / NUM);
+double fun(const double x) {
+    const auto fun1 = log((1 - NUM) / (cos ((x - NUM) * (numbers::pi / 180.0))));
+    const auto fun2 = abs(tan(x * numbers::pi / 180.0) / NUM);
     return min(fun1, fun2);
 }
 
@@ -37,10 +37,10 @@ int main() {
             cout << "|" << setw(13) << n << " | ";
             n++;
             cout << setw(11) << x0 << " | ";
-            if (isnan(fun1(x0))) {
+            if (isnan(fun(x0))) {
                 cout << setw(14) << "Error |";
             } else
-                cout << setw(12) << fun1(x0) << " |";
+                cout << setw(12) << fun(x0) << " |";
             cout << endl;
             x0 += deltaX;
         }
@@ -54,10 +54,10 @@ int main() {
             cout << "|" << setw(13) << n << " | ";
             n++;
             cout << setw(11) << x0 << " | ";
-            if (isnan(fun1(x0))) {
+            if (isnan(fun(x0))) {
                 cout << setw(14) << "Error |";
             } else
-                cout << setw(12) << fun1(x0) << " |";
+                cout << setw(12) << fun(x0) << " |";
             cout << endl;
             x0 += deltaX;
         }
