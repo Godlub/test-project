@@ -11,20 +11,15 @@ using namespace std;
 
 const short NUM = 69;
 
-double fun1(const int x) {
-    const auto fun1 = log(log(((1 - NUM) / (sin(sin(x + NUM))))));
-    const auto fun2 = abs(1 / (tan(x) / NUM));
-    return max(fun1, fun2);
-}
-
-double fun2(const int x) {
-    const auto fun1 = log(log(((1 - NUM) / (cos(cos(x - NUM))))));
+double fun1(double x) {
+    const auto fun1 = log(log((1 - NUM) / (cos(cos(x - NUM)))));
     const auto fun2 = abs(tan(x) / NUM);
     return min(fun1, fun2);
 }
 
 int main() {
-    int x0, x1, deltaX, n = 1;
+    int n = 1;
+    double x0, x1, deltaX;
     cout << "Input start value: " << endl;
     cin >> x0;
     cout << "Input final value: " << endl;
@@ -40,15 +35,10 @@ int main() {
         cout << "|" << setw(13) << n << " | ";
         n++;
         cout << setw(11) << x0 << " | ";
-        if (x0 % 2 == 0) {
-            if (isnan(fun1(x0))) {
-                cout << setw(14) << "Error |";
-            } else
-                cout << setw(12) << fun1(x0) << " |";
-        } else if (isnan(fun2(x0))) {
+        if (isnan(fun1(x0))) {
             cout << setw(14) << "Error |";
         } else
-            cout << setw(12) << fun2(x0) << " |";
+            cout << setw(12) << fun1(x0) << " |";
         cout << endl;
         x0 += deltaX;
     }
