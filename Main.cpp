@@ -13,7 +13,7 @@ using namespace std;
 const short NUM = 69;
 
 double fun(const double x) {
-    const auto fun1 = log((1 - NUM) / (cos ((x - NUM) * (numbers::pi / 180.0))));
+    const auto fun1 = log((1 - NUM) / (cos((x - NUM) * (numbers::pi / 180.0))));
     const auto fun2 = abs(tan(x * numbers::pi / 180.0) / NUM);
     return min(fun1, fun2);
 }
@@ -61,6 +61,6 @@ int main() {
             cout << endl;
             x0 += deltaX;
         }
-        return 0;
     }
+    return 0;
 }
