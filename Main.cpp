@@ -10,10 +10,11 @@
 using namespace std;
 
 const short NUM = 69;
+double pi = 3.1415926535;
 
 double fun1(double x) {
-    const auto fun1 = log(log((1 - NUM) / (cos(cos(x - NUM)))));
-    const auto fun2 = abs(tan(x) / NUM);
+    const auto fun1 = log((1 - NUM) / (cos((x - NUM) * (pi / 180))));
+    const auto fun2 = abs(tan(x * pi / 180) / NUM);
     return min(fun1, fun2);
 }
 
