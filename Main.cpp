@@ -26,12 +26,12 @@ int main() {
     cin >> x1;
     cout << "Input step size: " << endl;
     cin >> deltaX;
-    if (deltaX == 0) {
-        cout << "Error";
-        return 0;
-    }
-    cout << "|" << setw(13) << "line number" << " | " << setw(14) << "x= | " << setw(14) << "value |" << endl;
     if (x0 > x1) {
+        if (deltaX >= 0) {
+            cout << "Error";
+            return 0;
+        } else
+            cout << "|" << setw(13) << "line number" << " | " << setw(14) << "x= | " << setw(14) << "value |" << endl;
         while (x0 >= x1) {
             cout << "|" << setw(13) << n << " | ";
             n++;
@@ -43,7 +43,12 @@ int main() {
             cout << endl;
             x0 += deltaX;
         }
-    } else
+    } else if (x0 < x1) {
+        if (deltaX <= 0) {
+            cout << "Error";
+            return 0;
+        } else
+            cout << "|" << setw(13) << "line number" << " | " << setw(14) << "x= | " << setw(14) << "value |" << endl;
         while (x0 <= x1) {
             cout << "|" << setw(13) << n << " | ";
             n++;
@@ -55,5 +60,6 @@ int main() {
             cout << endl;
             x0 += deltaX;
         }
-    return 0;
+        return 0;
+    }
 }
