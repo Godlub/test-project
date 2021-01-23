@@ -28,7 +28,7 @@ int main() {
     cout << "Input step size: " << endl;
     cin >> deltaX;
     if (x0 > x1) {
-        if (deltaX >= 0) {
+        if (deltaX >= 0 || x0 == x1) {
             cout << "Error";
             return 0;
         } else
@@ -44,7 +44,8 @@ int main() {
             cout << endl;
             x0 += deltaX;
         }
-    } else if (deltaX <= 0) {
+        return 0;
+    } else if (deltaX <= 0 || x0 == x1) {
         cout << "Error";
         return 0;
     } else
